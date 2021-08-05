@@ -5,6 +5,7 @@ import Navigation from './components/Navigation/Navigation';
 const HomeView = lazy(() => import('./views/HomeView.js' /* webpackChunkName: "home-view" */));
 const MoviesView = lazy(() => import('./views/MoviesView.js' /* webpackChunkName: "movies-view" */));
 const MovieDetails =lazy(()=>import('./views/MovieDetails.js' /* webpackChunkName: "movies-details" */))
+const NotFoundView =lazy(()=>import('./views/NotFoundView.js' /* webpackChunkName: "error404" */))
 
 
 function App() {
@@ -22,8 +23,12 @@ function App() {
             <MoviesView />
           </Route>
 
-          <Route path='/movies/:id'>
+          <Route path='/movies/:movieId'>
             <MovieDetails />
+          </Route>
+
+          <Route >
+            <NotFoundView />
           </Route>
 
         </Switch>
