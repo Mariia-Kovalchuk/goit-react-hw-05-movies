@@ -1,11 +1,15 @@
 import { lazy, Suspense, } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Navigation from './components/Navigation/Navigation';
+import Navigation from './components/Navigation';
+import Loader from "react-loader-spinner";
+import styles from './views/HomeView/HomeView.module.css'
 
-const HomeView = lazy(() => import('./views/HomeView.js' /* webpackChunkName: "home-view" */));
-const MoviesView = lazy(() => import('./views/MoviesView.js' /* webpackChunkName: "movies-view" */));
-const MovieDetails =lazy(()=>import('./views/MovieDetails.js' /* webpackChunkName: "movies-details" */))
-const NotFoundView =lazy(()=>import('./views/NotFoundView.js' /* webpackChunkName: "error404" */))
+
+
+const HomeView = lazy(() => import('./views/HomeView' /* webpackChunkName: "home-view" */));
+const MoviesView = lazy(() => import('./views/MoviesView' /* webpackChunkName: "movies-view" */));
+const MovieDetails =lazy(()=>import('./views/MovieDetailsView' /* webpackChunkName: "movies-details" */))
+const NotFoundView =lazy(()=>import('./views/NotFoundView' /* webpackChunkName: "error404" */))
 
 
 function App() {
@@ -13,7 +17,7 @@ function App() {
     <div>
       <Navigation />
 
-      <Suspense fallback={<h1>ЗАГРУЖАЕМ МАРШРУТ...</h1>}>
+      <Suspense fallback={<Loader className={styles.Loader} type="Circles" color="#3f51b5" height={100} width={100} timeout={5000} />}>
         <Switch>
           <Route path="/" exact>
             <HomeView />
