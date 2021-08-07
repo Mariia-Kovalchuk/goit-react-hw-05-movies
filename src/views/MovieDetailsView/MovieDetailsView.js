@@ -31,7 +31,7 @@ const MovieDetails = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-  if (state.query) {
+  if (state?.query) {
     history.push({
       pathname: state.from,
       search: `query=${state.query}`
@@ -40,7 +40,7 @@ const MovieDetails = () => {
     return;
     }
 
-     if (!state.query && state.from) {
+     if (!state?.query && state?.from) {
     history.push({
       pathname: state.from,
     })
@@ -83,8 +83,8 @@ const MovieDetails = () => {
             <Link to={{
               pathname: `${url}/cast`,
               state: {
-                from: state.from,
-                query: state.query ? state.query : '',
+                from: state?.from || '/',
+                query: state?.query || '',
               }
             }}
             >Cast</Link>
@@ -93,8 +93,8 @@ const MovieDetails = () => {
             <Link to={{
               pathname: `${url}/reviews`,
               state: {
-                from: state.from,
-                query: state.query ? state.query : '',
+                from: state?.from || "/",
+                query: state?.query || '',
               }
             }}
             >Reviews</Link>
